@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Web Page</title>
+    <script src="sah_calc.js"></script>
+</head>
+<body>
+    <form name="myform">
+        <table width="70%">
+            <tr>
+                <td>Pre-Test Probability (Prevalence):
+                    <input type=text name="pretest" onChange="recalculate()" value="1" size=5
+                        style="text-align: right">%.
+                </td>
+                <td>Post-Test Probability (Predictive Value): <input type=text name="posttest" onChange="recalculate()"
+                        size=5 style="text-align: right">%.</td>
+            </tr>
+        </table>
+        <table class="checker_table" id="factors">
+            <tr>
+                <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
+                    History and Exam Clinical Feature</td>
+            </tr>
+            <tr class="header">
+                <td>Finding</td> <td>Result</td> <td>+LR</td><td>-LR</td>
+            </tr>
+           
+        </table>
+        <table class="checker_table" id="factorsCT">
+            <tr>
+                <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
+                    Pre-CT Probability of SAH</td>
+            </tr>
+            <tr class="header">
+                <td>Finding</td>
+                <td>Result</td>
+                <td>+LR</td>
+                <td>-LR</td>
+            </tr>
+  
+        </table>
+    </form>
+    <script>
+        // self executing function here
+        (function() {
+           makeTable("factors", riskFactors)
+           makeTable("factorsCT", riskFactorsPreCT)
+        
+        })();
+        </script>
+</body>
+</html>
