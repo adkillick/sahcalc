@@ -6,32 +6,37 @@
     <title>My Web Page</title>
     <script src="sah_calc.js"></script>
 </head>
+
 <body>
     <form name="myform">
         <table width="70%">
+            <tr> <td> Prevalence </td> <td> Predictive Values </td> </tr>
             <tr>
-                <td>Pre-Test Probability (Prevalence):
-                    <input type=text name="pretest" onChange="recalculate()" value="1" size=5
-                        style="text-align: right">%.
+                <td> Headache All Four Corners:
+                    <input type="radio" name="pretest" value=0.01 onChange="recalculate()" style="text-align: right" checked>1%.
                 </td>
-                <td>Post-Test Probability (Predictive Value): <input type=text name="posttest" onChange="recalculate()"
-                        size=5 style="text-align: right">%.</td>
+                <td>Pre-CT Probability: <span id="p0">.</td>
+            </tr>
+            <tr>
+                <td>1 Hour to Peak Headache:
+                    <input type="radio" name="pretest" value=0.075 onChange="recalculate()"
+                        style="text-align: right">0.75%.
+                </td>
+                <td>Pre-Lumbar Puncture Probability: <span id = "p1">.</td>
+            </tr>
+            <tr>
+                <td > </td>
+                <td>Pre-Angiogram Probability: <span id = "p2">.</td>
+            </tr>
+            <tr>
+                <td > </td>
+                <td>Post-Angiogram Probability: <span id = "p3">.</td>
             </tr>
         </table>
-        <table class="checker_table" id="factors">
+        <table class="checker_table" id="historyAndExam">
             <tr>
                 <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
                     History and Exam Clinical Feature</td>
-            </tr>
-            <tr class="header">
-                <td>Finding</td> <td>Result</td> <td>+LR</td><td>-LR</td>
-            </tr>
-           
-        </table>
-        <table class="checker_table" id="factorsCT">
-            <tr>
-                <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
-                    Pre-CT Probability of SAH</td>
             </tr>
             <tr class="header">
                 <td>Finding</td>
@@ -39,16 +44,58 @@
                 <td>+LR</td>
                 <td>-LR</td>
             </tr>
-  
+
+        </table>
+        <table class="checker_table" id="nonContrastCT">
+            <tr>
+                <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
+                   Non-Contrast CT </td>
+            </tr>
+            <tr class="header">
+                <td>Finding</td>
+                <td>Result</td>
+                <td>+LR</td>
+                <td>-LR</td>
+            </tr>
+
+        </table>
+        <table class="checker_table" id="lumbarPuncture">
+            <tr>
+                <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
+                    Lumbar Puncture </td>
+            </tr>
+            <tr class="header">
+                <td>Finding</td>
+                <td>Result</td>
+                <td>+LR</td>
+                <td>-LR</td>
+            </tr>
+
+        </table>
+        <table class="checker_table" id="angiogram">
+            <tr>
+                <td colspan=4 style="font-size:120%; font-weight: bold; font-style: italic"><a name="1_1"></a>
+                    CT-Angiogram </td>
+            </tr>
+            <tr class="header">
+                <td>Finding</td>
+                <td>Result</td>
+                <td>+LR</td>
+                <td>-LR</td>
+            </tr>
+
         </table>
     </form>
     <script>
         // self executing function here
-        (function() {
-           makeTable("factors", riskFactors)
-           makeTable("factorsCT", riskFactorsPreCT)
-        
+        (function () {
+            makeTable("historyAndExam", historyFactors)
+            makeTable("nonContrastCT", ctFactors)
+            makeTable("lumbarPuncture", lpFactors)
+            makeTable("angiogram", angioFactors)
+
         })();
-        </script>
+    </script>
 </body>
+
 </html>
